@@ -64,7 +64,7 @@ public class SwiftZendeskHelper: NSObject, FlutterPlugin {
               let phoneNumber = dictionary["phoneNumber"] as? String
         else { return }
         let department = dictionary["department"] as? String ?? ""
-        chatAPIConfig?.department = department
+        chatAPIConfig?.departmentName = department
         chatAPIConfig?.visitorInfo = VisitorInfo(name: name, email: email, phoneNumber: phoneNumber)
         Chat.instance?.configuration = chatAPIConfig!
     }
@@ -151,6 +151,6 @@ public class SwiftZendeskHelper: NSObject, FlutterPlugin {
         guard let message = dictionary["message"] as? String
         else { return }
         
-        Chat.chatProvider?.sendMessage(message)
+        Chat.instance?.chatProvider.sendMessage(message)
     }
 }
