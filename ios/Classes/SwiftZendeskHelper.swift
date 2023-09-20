@@ -144,8 +144,8 @@ public class SwiftZendeskHelper: NSObject, FlutterPlugin {
         
         navController.viewControllers = [viewController]
         
-        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: dictionary["close"] as? String ?? "Fechar", style: .plain, target: self, action: #selector(backButton))
-        viewController.title = dictionary["title"] as? String ?? "Suporte"
+        viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: dictionary["closeAction"] as? String ?? "Fechar", style: .plain, target: self, action: #selector(backButton))
+        viewController.title = dictionary["toolbarTitle"] as? String ?? "Suporte"
         if let theme = dictionary["isDarkTheme"] as? Bool {
             if #available(iOS 13.0, *) {
                 viewController.overrideUserInterfaceStyle = theme ? .dark : .light

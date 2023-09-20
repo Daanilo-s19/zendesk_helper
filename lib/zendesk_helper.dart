@@ -71,6 +71,7 @@ class Zendesk {
     bool disableEndChatMenuAction = false,
     String? botName = 'Answer Bot',
     String? toolbarTitle = 'Contact Us',
+    String? closeAction = 'Close',
   }) async {
     await _channel.invokeMethod<void>('startChat', {
       'isDarkTheme': isDarkTheme,
@@ -85,6 +86,7 @@ class Zendesk {
       'disableEndChatMenuAction': disableEndChatMenuAction,
       'toolbarTitle': toolbarTitle,
       'botName': botName,
+      'closeAction': closeAction,
     });
   }
 
