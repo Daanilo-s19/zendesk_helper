@@ -154,11 +154,15 @@ public class SwiftZendeskHelper: NSObject, FlutterPlugin {
             }
         }
 
-        presentViewController(rootViewController: rootViewController, view: navController);
+        presentViewController(view: navController);
     }
     
     
-    func presentViewController(rootViewController: UIViewController?, view: UIViewController) {
+    func presentViewController(view: UIViewController) {
+        if(view.isBeingPresented) {
+            return
+        }
+        
         if var topController = UIApplication.shared.keyWindow?.rootViewController  {
                        while let presentedViewController = topController.presentedViewController {
                              topController = presentedViewController
@@ -211,15 +215,10 @@ public class SwiftZendeskHelper: NSObject, FlutterPlugin {
         flutterResult(true)
     }
     
-    private func unregisterPushToken() -> Bool {
+    private func unregisterPushToken() {
         guard let pushProvider = Chat.instance?.pushNotificationsProvider else {
-            return true
+            return
         }
-        do {
-            try pushProvider.unregisterPushToken()
-            return true
-        } catch {
-            return false
-        }
+        pushProvider.unregisterPushToken()
     }
 }
