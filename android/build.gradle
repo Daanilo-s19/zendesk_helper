@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath 'com.android.tools.build:gradle:7.0.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -26,7 +26,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33
+
+    compileSdk = 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -42,8 +43,10 @@ android {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation group: 'com.zendesk', name: 'chat', version: '3.4.0'
     implementation group: 'com.zendesk', name: 'messaging', version: '5.4.0'
     implementation group: 'com.zendesk', name: 'chat-providers', version: '3.4.0'
+    implementation group: 'com.zendesk', name: 'support', version: '5.2.0'
+    implementation group: 'com.zendesk', name: 'answerbot', version: '3.2.0'
 }
